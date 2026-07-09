@@ -86,7 +86,7 @@ if analyze:
         st.metric("Current Price", info["Current Price"])
 
     with c2:
-        st.metric("Market Cap", info["Market Cap"])
+        st.metric("Market Cap", format_number(info["Market Cap"]))
 
     with c3:
         st.metric("PE Ratio", info["PE Ratio"])
