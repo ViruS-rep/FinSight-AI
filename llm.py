@@ -2,6 +2,8 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 
+from services.rag_service import retrieve_for_report, format_context
+
 load_dotenv()
 
 client = Groq(
@@ -62,6 +64,17 @@ def analyze_stock(info, history, income, balance, cashflow):
     investing_cf = safe_get(cashflow, "Investing Cash Flow")
     financing_cf = safe_get(cashflow, "Financing Cash Flow")
     free_cf = safe_get(cashflow, "Free Cash Flow")
+
+    # -------------------------
+    # RAG: retrieve relevant financial concept/methodology/sector
+    # reference material from the local knowledge base to ground the
+    # LLM's analytical framing (ratio interpretation, technical analysis
+    # conventions, sector context) rather than relying purely on the
+    # model's own parametric recall.
+    # -------------------------
+
+    retrieved_docs = retrieve_for_report(info)
+    retrieved_context = format_context(retrieved_docs)
 
     prompt = f"""
 You are a Senior Equity Research Analyst at JPMorgan.
@@ -150,6 +163,19 @@ Financing Cash Flow : {financing_cf}
 Free Cash Flow : {free_cf}
 
 =================================================
+RETRIEVED REFERENCE MATERIAL (financial concepts, methodology, sector context)
+=================================================
+
+Use the material below only to inform how you interpret and explain the
+company's own numbers above (e.g. what a given ratio means, how to read
+moving average signals, general sector considerations). Do NOT present it
+as data about this specific company, and do not fabricate numbers that
+aren't in the COMPANY INFORMATION / INCOME STATEMENT / BALANCE SHEET /
+CASH FLOW sections above.
+
+{retrieved_context}
+
+=================================================
 
 Generate a professional equity research report with the following sections:
 
@@ -208,4 +234,4 @@ Avoid making a definitive "buy", "sell", or "hold" recommendation. Instead, expl
         max_tokens=1800
     )
 
-    return response.choices[0].message.content
+    return response.choices[0].message.content, retrieved_docs

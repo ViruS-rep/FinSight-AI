@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 
 from stock import StockAnalyzer
 from llm import analyze_stock
+from services.sentiment_service import analyze_sentiment
 
 def format_number(x):
     if x is None:
@@ -116,6 +117,40 @@ if analyze:
 
     st.subheader("🏢 Company Overview")
     st.write(info["Summary"])
+
+    with st.spinner("Scoring sentiment (FinBERT)..."):
+        sentiment = analyze_sentiment(info["Summary"])
+
+    sentiment_label = sentiment["label"]
+    sentiment_score = sentiment["score"]
+
+    sentiment_display = {
+        "positive": ("🟢 Positive", "normal"),
+        "negative": ("🔴 Negative", "inverse"),
+        "neutral": ("🟡 Neutral", "off"),
+        "unavailable": ("⚪ Unavailable", "off"),
+    }
+    label_text, delta_color = sentiment_display.get(sentiment_label, ("🟡 Neutral", "off"))
+
+    st.caption("🤖 Financial Sentiment (FinBERT, local transformer model)")
+    sc1, sc2, sc3 = st.columns(3)
+    with sc1:
+        st.metric("Sentiment", label_text)
+    with sc2:
+        st.metric("Confidence", f"{sentiment_score * 100:.1f}%" if sentiment_score else "N/A")
+    with sc3:
+        breakdown = sentiment["breakdown"]
+        st.caption(
+            f"Positive: {breakdown['positive']*100:.0f}% · "
+            f"Neutral: {breakdown['neutral']*100:.0f}% · "
+            f"Negative: {breakdown['negative']*100:.0f}%"
+        )
+
+    if sentiment_label == "unavailable":
+        st.info(
+            "Sentiment analysis requires the `transformers` and `torch` packages. "
+            "Run `pip install -r requirements.txt` to enable it."
+        )
 
     st.divider()
 
@@ -268,8 +303,8 @@ if analyze:
 
     st.header("🤖 AI Investment Analysis")
 
-    with st.spinner("Generating AI Report..."):
-        report = analyze_stock(
+    with st.spinner("Retrieving reference material and generating AI report..."):
+        report, rag_sources = analyze_stock(
             info,
             history,
             analyzer.get_income_statement(),
@@ -279,3 +314,14 @@ if analyze:
 
     with st.container(border=True):
         st.markdown(report)
+
+    # if rag_sources:
+    #     with st.expander(f"📚 Reference material used ({len(rag_sources)} sources retrieved via RAG)"):
+    #         st.caption(
+    #             "Retrieved from the local financial knowledge base and given to the model "
+    #             "as grounding context for ratio interpretation, technical analysis conventions, "
+    #             "and sector considerations — not as data about this specific company."
+    #         )
+    #         for doc in rag_sources:
+    #             st.markdown(f"**{doc['title']}** · _{doc['category']}_ · relevance {doc['score']:.2f}")
+    #             st.caption(doc["content"])

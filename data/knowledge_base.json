@@ -1,0 +1,134 @@
+[
+  {
+    "id": "val_pe",
+    "category": "valuation",
+    "title": "P/E Ratio Interpretation",
+    "content": "The Price-to-Earnings (P/E) ratio measures how much investors are paying per unit of current earnings. A high P/E relative to peers can signal that the market expects strong future growth, or that the stock is overvalued relative to its fundamentals. A low P/E can signal undervaluation, or it can reflect genuine concerns about slowing growth, cyclical earnings, or business risk. P/E should always be compared against the company's own historical range and against direct sector peers rather than judged in isolation, since 'normal' P/E levels vary widely by industry."
+  },
+  {
+    "id": "val_peg",
+    "category": "valuation",
+    "title": "PEG Ratio",
+    "content": "The PEG ratio (P/E divided by expected earnings growth rate) adjusts the P/E ratio for growth, making it useful for comparing companies with different growth profiles. A PEG near 1 is often considered fairly valued relative to growth; well above 1 can suggest the growth is already priced in; well below 1 can suggest the market is undervaluing the company's growth trajectory. PEG is only as reliable as the growth estimate used, so it should be treated as a supporting signal rather than a standalone verdict."
+  },
+  {
+    "id": "val_ev_ebitda",
+    "category": "valuation",
+    "title": "EV/EBITDA",
+    "content": "Enterprise Value to EBITDA compares a company's total value (equity plus debt, minus cash) to its earnings before interest, taxes, depreciation and amortization. Because it is capital-structure neutral, it is often used to compare companies with different debt levels or tax situations, and is common in capital-intensive sectors like industrials, telecom, and energy."
+  },
+  {
+    "id": "prof_margins",
+    "category": "profitability",
+    "title": "Gross, Operating and Net Margin",
+    "content": "Gross margin (gross profit / revenue) reflects pricing power and direct cost efficiency. Operating margin (operating income / revenue) captures profitability after operating expenses like SG&A and R&D, showing core business efficiency. Net margin (net income / revenue) reflects bottom-line profitability after interest, taxes and non-operating items. A widening gap between gross and operating margin over time can indicate rising overhead or R&D investment relative to revenue growth."
+  },
+  {
+    "id": "prof_roe_roa",
+    "category": "profitability",
+    "title": "ROE and ROA",
+    "content": "Return on Equity (net income / shareholder equity) measures how efficiently a company generates profit from shareholders' capital, but can be inflated by high leverage (debt), so it should be read alongside the debt-to-equity ratio. Return on Assets (net income / total assets) measures how efficiently a company uses its full asset base regardless of financing structure, and is less distorted by leverage than ROE."
+  },
+  {
+    "id": "liq_current_quick",
+    "category": "liquidity",
+    "title": "Current Ratio and Quick Ratio",
+    "content": "The current ratio (current assets / current liabilities) measures short-term liquidity; a ratio comfortably above 1 generally indicates the company can cover near-term obligations. The quick ratio excludes inventory from current assets, offering a stricter test of liquidity for companies where inventory may be slow to convert to cash. Very high current ratios are not automatically positive either, as they can indicate inefficient use of working capital."
+  },
+  {
+    "id": "lev_debt_equity",
+    "category": "leverage",
+    "title": "Debt-to-Equity and Financial Leverage",
+    "content": "Debt-to-Equity (total liabilities / shareholder equity) indicates how much a company relies on debt versus equity financing. Higher leverage amplifies both potential returns and potential losses, and increases sensitivity to interest rate changes and earnings downturns. Leverage should be evaluated relative to the stability of a company's cash flows and its sector norms; capital-intensive or utility-like businesses can typically sustain higher leverage than cyclical or early-stage growth businesses."
+  },
+  {
+    "id": "cf_fcf",
+    "category": "cash_flow",
+    "title": "Free Cash Flow",
+    "content": "Free Cash Flow (operating cash flow minus capital expenditures) represents the cash a company generates after maintaining and growing its asset base, available for dividends, buybacks, debt repayment, or reinvestment. Consistent positive and growing FCF is generally viewed as a sign of financial health and flexibility. A company can show accounting profit (net income) while having weak or negative free cash flow, which is often a yellow flag worth investigating further."
+  },
+  {
+    "id": "cf_quality",
+    "category": "cash_flow",
+    "title": "Cash Flow Quality vs Earnings",
+    "content": "Comparing operating cash flow to net income helps assess earnings quality. When operating cash flow consistently exceeds net income, it can suggest conservative or high-quality earnings. When net income significantly exceeds operating cash flow over multiple periods, it can indicate aggressive revenue recognition, rising receivables, or other factors that warrant closer scrutiny."
+  },
+  {
+    "id": "tech_moving_averages",
+    "category": "technical",
+    "title": "Moving Averages (SMA/EMA) Interpretation",
+    "content": "Simple Moving Averages (SMA) smooth price data over a fixed window and are commonly used to identify trend direction. When a shorter-term average (e.g. 20-day) is above a longer-term average (e.g. 50-day), it is often referred to as a bullish setup or 'golden cross' when the crossover happens; the reverse is a 'death cross' and is often viewed as bearish. Exponential Moving Averages (EMA) weight recent prices more heavily, making them more responsive to recent momentum than SMAs, at the cost of being more prone to short-term noise."
+  },
+  {
+    "id": "tech_price_vs_average",
+    "category": "technical",
+    "title": "Price Relative to Moving Averages",
+    "content": "Price trading above its major moving averages is generally interpreted as an uptrend, while price trading below is generally interpreted as a downtrend or consolidation. The distance between price and its moving averages can also be informative: a price far extended above its averages may be considered technically overbought and prone to a pullback, while a price far below may be considered oversold, though this is not a guarantee of reversal on its own."
+  },
+  {
+    "id": "tech_volume",
+    "category": "technical",
+    "title": "Volume as a Confirmation Signal",
+    "content": "Trading volume is often used to confirm the strength of a price move. A price breakout or trend accompanied by rising volume is generally considered more reliable than the same move on low volume, which can suggest a lack of broad participation and a higher chance the move reverses."
+  },
+  {
+    "id": "sector_technology",
+    "category": "sector",
+    "title": "Technology Sector Characteristics",
+    "content": "Technology companies are often valued on growth expectations, which can result in higher P/E and revenue multiples relative to the broader market. Key considerations include R&D intensity, the durability of competitive moats (network effects, switching costs, IP), recurring/subscription revenue quality, and sensitivity to interest rates given that a larger share of valuation is tied to distant future earnings."
+  },
+  {
+    "id": "sector_financials",
+    "category": "sector",
+    "title": "Financials Sector Characteristics",
+    "content": "Banks and financial institutions are typically evaluated using different metrics than industrial or tech companies, such as net interest margin, loan quality, and capital adequacy, since traditional metrics like gross margin are less meaningful for their business model. Financials are also sensitive to interest rate cycles and regulatory capital requirements."
+  },
+  {
+    "id": "sector_energy",
+    "category": "sector",
+    "title": "Energy Sector Characteristics",
+    "content": "Energy companies are highly sensitive to commodity price cycles, which can cause significant swings in revenue and margins independent of company-specific execution. Capital expenditure discipline, reserve replacement, and free cash flow through the cycle are typically more informative than a single period's earnings."
+  },
+  {
+    "id": "sector_healthcare",
+    "category": "sector",
+    "title": "Healthcare Sector Characteristics",
+    "content": "Healthcare and pharmaceutical companies are often evaluated on pipeline strength, patent expiration timelines, and regulatory/clinical trial risk, in addition to standard financial metrics. Revenue durability can be affected by patent cliffs, while medical device and healthcare services companies are more comparable to typical industrial or services financial profiles."
+  },
+  {
+    "id": "sector_consumer",
+    "category": "sector",
+    "title": "Consumer Discretionary and Staples",
+    "content": "Consumer staples companies tend to have more stable, defensive demand and are often valued for consistency and dividend reliability rather than high growth. Consumer discretionary companies are more cyclical, with demand more sensitive to macroeconomic conditions, employment, and consumer confidence."
+  },
+  {
+    "id": "sector_industrials",
+    "category": "sector",
+    "title": "Industrials Sector Characteristics",
+    "content": "Industrial companies are often capital-intensive and cyclical, with performance tied to broader economic activity, manufacturing orders, and capital spending cycles. Backlog and order book trends are often a useful leading indicator, alongside standard margin and leverage metrics."
+  },
+  {
+    "id": "risk_framework",
+    "category": "risk",
+    "title": "Risk Assessment Framework",
+    "content": "A balanced risk assessment typically separates macroeconomic risk (interest rates, inflation, currency, broad economic cycles), sector/industry risk (regulation, competitive dynamics, commodity exposure), and company-specific risk (leverage, customer concentration, management execution, litigation). Distinguishing between these categories helps clarify which risks are broadly systemic versus specific to the individual company."
+  },
+  {
+    "id": "growth_value",
+    "category": "strategy",
+    "title": "Growth vs Value Framework",
+    "content": "Growth-oriented analysis emphasizes revenue and earnings growth trajectories, total addressable market, and reinvestment potential, often tolerating higher near-term valuation multiples. Value-oriented analysis emphasizes current cash flow, asset backing, and valuation relative to intrinsic worth, often prioritizing a margin of safety over growth potential. Most companies sit somewhere on a spectrum between the two rather than fitting one label exclusively."
+  },
+  {
+    "id": "dividend_yield",
+    "category": "dividend",
+    "title": "Dividend Yield Interpretation",
+    "content": "Dividend yield (annual dividend per share / share price) reflects income return to shareholders. A very high yield relative to a company's own history or peers can sometimes reflect a depressed share price or an unsustainable payout rather than genuine strength, so yield should be considered alongside the payout ratio and free cash flow coverage rather than in isolation."
+  },
+  {
+    "id": "market_cap_context",
+    "category": "valuation",
+    "title": "Market Capitalization Context",
+    "content": "Market capitalization (share price x shares outstanding) is used to classify companies as large-cap, mid-cap, or small-cap, which affects expected volatility, analyst coverage, and liquidity. Large-cap companies are generally more stable with more analyst coverage; small-cap companies can offer higher growth potential alongside higher volatility and less liquidity."
+  }
+]
