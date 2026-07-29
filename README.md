@@ -1,74 +1,131 @@
 # 📈 FinSight AI
 
-An AI-powered financial research assistant that combines **live market data**, **technical analysis**, **financial statements**, and **Large Language Models (LLMs)** to generate professional equity research reports.
+An AI-powered financial research assistant that combines **live market data**, **financial statements**, **technical analysis**, **Retrieval-Augmented Generation (RAG)**, **market sentiment analysis**, and **Llama 3.3** to generate professional equity research reports.
 
 ---
 
-## 🚀 Live Demo
+# 🚀 Live Demo
 
-🔗 **https://finsight-ai-s6sse6jrgibzxblvyc5g54.streamlit.app/**
-
----
-
-## ✨ Features
-
-- 📊 Live Stock Market Data
-- 📈 Interactive Stock Price Visualization
-- 📉 Technical Indicators
-  - SMA 20
-  - SMA 50
-  - EMA 20
-- 📑 Income Statement
-- 🏦 Balance Sheet
-- 💵 Cash Flow Statement
-- 🤖 AI-Powered Investment Analysis using Llama 3.3
-- 📱 Responsive Streamlit Dashboard
-- ☁️ Cloud Deployment on Streamlit
+🔗 https://finsight-ai-s6sse6jrgibzxblvyc5g54.streamlit.app/
 
 ---
 
-## 📷 Application Preview
+# ✨ Features
 
-### Dashboard
+### 📊 Live Market Intelligence
+
+- Live Stock Prices
+- Company Overview
+- Market Capitalization
+- PE Ratio
+- EPS
+- Dividend Yield
+- Business Summary
+
+### 📈 Technical Analysis
+
+- Interactive Plotly Charts
+- SMA 20
+- SMA 50
+- EMA 20
+- Historical Price Analysis
+
+### 📑 Financial Statements
+
+- Income Statement
+- Balance Sheet
+- Cash Flow Statement
+
+### 🧠 AI Research Engine
+
+- Llama 3.3 powered investment analysis
+- Retrieval-Augmented Generation (RAG)
+- Semantic search over a financial knowledge base
+- Context-aware report generation
+- Market sentiment analysis
+- Investment recommendations with supporting context
+
+### ⚡ Performance
+
+- Cached knowledge base loading
+- Modular service architecture
+- Responsive Streamlit interface
+
+---
+
+# 📷 Application Preview
+
+## Dashboard
 
 ![Dashboard](assets/dashboard.png)
 
 ---
 
-### Technical Analysis
+## Technical Analysis
 
 ![Technical Analysis](assets/chart.png)
 
 ---
 
-### Financial Statements
+## Financial Statements
 
 ![Financial Statements](assets/financials.png)
 
 ---
 
-### AI Investment Analysis
+## AI Investment Analysis
 
 ![AI Analysis](assets/AI-analysis.png)
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠 Tech Stack
 
 | Category | Technologies |
 |-----------|--------------|
 | Language | Python |
 | Frontend | Streamlit |
-| Data | Pandas |
+| Data Processing | Pandas, NumPy |
 | Market Data | yFinance |
 | Visualization | Plotly |
-| AI | Groq API + Llama 3.3 70B |
+| LLM | Groq API + Llama 3.3 70B |
+| RAG | Sentence Transformers (all-MiniLM-L6-v2) |
+| NLP | Semantic Search, Market Sentiment Analysis |
+| Environment | python-dotenv |
 | Version Control | Git & GitHub |
 | Deployment | Streamlit Community Cloud |
 
 ---
 
-## ⚙️ Installation
+# 🏗 Architecture
+
+```
+                User Query
+                     │
+                     ▼
+              Streamlit Frontend
+                     │
+      ┌──────────────┼──────────────┐
+      ▼              ▼              ▼
+ Stock Service   News Service   RAG Service
+      │              │              │
+      ▼              ▼              ▼
+ yFinance API   Market News   Knowledge Base
+      │                             │
+      └──────────────┬──────────────┘
+                     ▼
+             Context Builder
+                     │
+                     ▼
+          Groq Llama 3.3 LLM
+                     │
+                     ▼
+     Professional Equity Research Report
+```
+
+---
+
+# ⚙️ Installation
 
 Clone the repository
 
@@ -76,10 +133,30 @@ Clone the repository
 git clone https://github.com/ViruS-rep/FinSight-AI.git
 ```
 
-Go into the project directory
+Go to the project
 
 ```bash
 cd FinSight-AI
+```
+
+Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate it
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source venv/bin/activate
 ```
 
 Install dependencies
@@ -91,7 +168,7 @@ pip install -r requirements.txt
 Create a `.env` file
 
 ```env
-GROQ_API_KEY=your_api_key_here
+GROQ_API_KEY=your_groq_api_key
 ```
 
 Run the application
@@ -102,49 +179,24 @@ streamlit run app.py
 
 ---
 
-## 📊 What the Application Provides
-
-### Company Overview
-
-- Company Profile
-- Market Capitalization
-- PE Ratio
-- EPS
-- Dividend Yield
-- Business Summary
-
-### Technical Analysis
-
-- Historical Stock Prices
-- SMA 20
-- SMA 50
-- EMA 20
-- Interactive Plotly Charts
-
-### Financial Analysis
-
-- Income Statement
-- Balance Sheet
-- Cash Flow Statement
-
-### AI Research Report
-
-The integrated LLM generates a professional equity research report including:
+# 📊 AI Research Report Includes
 
 - Executive Summary
+- Company Overview
 - Fundamental Analysis
 - Technical Analysis
-- Financial Health
+- Financial Health Assessment
+- Market Sentiment Analysis
 - Strengths
 - Risks
 - Growth Opportunities
 - Short-Term Outlook
 - Long-Term Outlook
-- Investment Opinion
+- Final Investment Recommendation
 
 ---
 
-## 📁 Project Structure
+# 📂 Project Structure
 
 ```
 FinSight-AI
@@ -154,6 +206,13 @@ FinSight-AI
 │   ├── chart.png
 │   ├── financials.png
 │   └── AI-analysis.png
+│
+├── data/
+│   └── knowledge_base.json
+│
+├── services/
+│   ├── rag_service.py
+│   ├── sentiment_service.py
 │
 ├── app.py
 ├── stock.py
@@ -165,20 +224,34 @@ FinSight-AI
 
 ---
 
-## 🔮 Future Improvements
+# 🔍 How RAG Works
 
-- Real-Time Financial News
-- Market Sentiment Analysis
-- Portfolio Tracker
-- Stock Comparison Dashboard
-- Risk Score Prediction
-- PDF Equity Research Report Export
-- Watchlist & Alerts
+1. User selects a stock.
+2. Live financial data is fetched using yFinance.
+3. Relevant financial knowledge is retrieved using semantic search.
+4. Market sentiment is analyzed.
+5. Retrieved context is combined with live financial metrics.
+6. Llama 3.3 generates a grounded equity research report.
 
 ---
 
-## 👨‍💻 Author
+# 🚀 Future Improvements
 
-**ViruS-rep**
+- SEC Filing Retrieval
+- Earnings Call Analysis
+- Vector Database (FAISS/ChromaDB)
+- Portfolio Optimization
+- Multi-Company Comparison
+- PDF Equity Research Report Export
+- Watchlist & Alerts
+- Real-Time News Summarization
 
-If you found this project interesting, consider ⭐ starring the repository.
+---
+
+# 👨‍💻 Author
+
+**Viraj**
+
+GitHub: https://github.com/ViruS-rep
+
+If you found this project useful, consider giving it a ⭐.
